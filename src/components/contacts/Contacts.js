@@ -6,9 +6,10 @@ const Contacts = () => {
   const { contacts } = useContext(ContactContext);
   return (
     <Fragment>
-      {contacts.map(contact => (
-        <ContactItem key={contact.id} contact={contact} />
-      ))}
+      {contacts.length > 0 &&
+        contacts.map(contact => (
+          <ContactItem key={contact.id} contact={contact} />
+        ))}
     </Fragment>
   );
 };

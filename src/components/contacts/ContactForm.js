@@ -2,13 +2,14 @@ import React, { useState, useContext } from "react";
 import ContactContext from "../../context/contact/contactContext";
 
 const ContactForm = () => {
-  const { addContact } = useContext(ContactContext);
-  const [contact, setContact] = useState({
+  const initialState = {
     name: "",
     email: "",
     phone: "",
     type: "personal",
-  });
+  };
+  const { addContact } = useContext(ContactContext);
+  const [contact, setContact] = useState(initialState);
 
   const { name, email, phone, type } = contact;
 
@@ -21,7 +22,7 @@ const ContactForm = () => {
   const onSubmit = e => {
     e.preventDefault();
     addContact(contact);
-    setContact({ name: "", email: "", phone: "", type: "personal" });
+    setContact(initialState);
   };
 
   return (

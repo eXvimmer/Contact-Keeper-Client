@@ -13,6 +13,7 @@ const ContactItem = ({ contact }) => {
     if (current) {
       clearCurrent();
     }
+
     deleteContact(id);
   };
 

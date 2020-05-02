@@ -36,9 +36,13 @@ const ContactForm = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (!current) {
+      if (!name) {
+        return;
+      }
       addContact(contact);
     } else {
       updateContact(contact);
+      clearCurrent();
     }
     setContact({
       name: "",

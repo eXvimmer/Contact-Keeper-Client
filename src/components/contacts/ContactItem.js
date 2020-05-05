@@ -7,14 +7,14 @@ const ContactItem = ({ contact }) => {
     ContactContext
   );
 
-  const { name, id, email, phone, type } = contact;
+  const { name, _id, email, phone, type } = contact;
 
   const onDelete = e => {
     if (current) {
       clearCurrent();
     }
 
-    deleteContact(id);
+    deleteContact(_id);
   };
 
   const onEdit = e => {

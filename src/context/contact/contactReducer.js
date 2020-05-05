@@ -6,6 +6,7 @@ import {
   UPDATE_CONTACT,
   FILTER_CONTACTS,
   CLEAR_FILTER,
+  CONTACT_ERROR,
 } from "../types";
 
 export default (state, action) => {
@@ -20,7 +21,7 @@ export default (state, action) => {
       return {
         ...state,
         contacts: state.contacts.map(contact =>
-          contact.id === action.payload.id ? action.payload : contact
+          contact._id === action.payload.id ? action.payload : contact
         ),
       };
 
@@ -28,7 +29,7 @@ export default (state, action) => {
       return {
         ...state,
         contacts: state.contacts.filter(
-          contact => contact.id !== action.payload
+          contact => contact._id !== action.payload
         ),
       };
 
@@ -67,6 +68,12 @@ export default (state, action) => {
       return {
         ...state,
         filtered: null,
+      };
+
+    case CONTACT_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:

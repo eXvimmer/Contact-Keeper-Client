@@ -1,14 +1,23 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
+import AuthContext from "../../context/auth/authContext";
 
 const Register = () => {
   const { setAlerts } = useContext(AlertContext);
+  const { register, error, clearErrors } = useContext(AuthContext);
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
     password2: "",
   });
+
+  useEffect(() => {
+    if (error === "User already exists") {
+      setAlerts(error, "danger");
+      clearErrors();
+    }
+  }, [error]);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -17,7 +26,7 @@ const Register = () => {
     } else if (password !== password2) {
       setAlerts("Passwords do not match", "danger");
     } else {
-      console.log("Register submit");
+      register({ name, email, password });
     }
   };
 

@@ -105,7 +105,6 @@ const AuthState = props => {
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
         user: state.user,
-        user: state.user,
         error: state.error,
         register,
         clearErrors,
